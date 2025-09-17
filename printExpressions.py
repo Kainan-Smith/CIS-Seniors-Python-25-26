@@ -16,3 +16,7 @@ print("Suddenly, I'm not half the man I'm used to be.")
 print("There's a shadow hanging over me, oh yesterday came suddenly.")
 print("Why she had to go I don't know, she wouldn't say.")
 print("I said something wrong now I long for yesterday.")
+
+print()
+print(200 + 400)
+print("Good morning, " + "my name is Kainan")
