@@ -25,7 +25,8 @@ interestRate = float(input("Enter the interest percentage: "))
 
 # Convert the interest rate to a decimal number
 interestRate = 1 + (interestRate / 100)
-print(interestRate)
+endInvest = startingAmount * (interestRate ** numYears)
+print("Your total invested amount is ", round(endInvest, 2))
 
 # Initialize the accumulator for the interest
 
