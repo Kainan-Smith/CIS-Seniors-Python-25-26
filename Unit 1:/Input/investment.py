@@ -20,16 +20,23 @@ print("\n\nMy Investment Calculator")
 print("=" * 25)
 # Accept the inputs
 startingAmount = float(input("Enter the starting investment amount: "))
-numYears = float(input("Enter the number of years to invest: "))
+numYears = int(input("Enter the number of years to invest: "))
+year = 1
 interestRate = float(input("Enter the interest percentage: "))
+balance = startingAmount
 
 # Convert the interest rate to a decimal number
 interestRate = 1 + (interestRate / 100)
-endInvest = startingAmount * (interestRate ** numYears)
-print("Your total invested amount is ", round(endInvest, 2))
 
 # Initialize the accumulator for the interest
+print("Starting Amount:", startingAmount)
 
+count = 0
+while count < numYears:
+    balance = balance * interestRate
+    print("Balance after " + str(year) + ":", round(balance, 2))
+    count += 1
+    year += 1
 
 # Display the header for the table
 
