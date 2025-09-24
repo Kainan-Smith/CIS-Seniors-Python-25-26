@@ -11,13 +11,7 @@ MIN_PAY_RATE = 0.003
 MAX_PAY_RATE = 0.005
 
 # Collect inputs and set variables accordingly
-distributor = input("What distributor are you using for your release? ")
-
-if distributor == "Distrokid" or "distrokid" or "DistroKid":
-    distributor = "DistroKid"
-if distributor == "Soundrop" or "soundrop" or "Sound drop" or "sound drop" or "Sound Drop" or "Sounddrop" or "sounddrop" or "SoundDrop":
-    distributor = "Soundrop"
-
+distributor = input("What distributor are you using for your release? (DistroKid or Soundrop) ")
 numSongs = int(input("How many original songs are in your release? "))
 numCover = int(input("How many cover songs are in your release? "))
 
@@ -27,24 +21,29 @@ costPerYear = 0.0
 
 if distributor == "DistroKid":
     cost = 24.99
-    costPerYear = numCover * (0.99 * 12)
+    costPerYear = round((numCover * (0.99 * 12)), 2)
 if distributor == "Soundrop":
-    cost = (numSongs * 4.99) + (numCover * 5.99)
+    cost = round((numSongs * 4.99) + (numCover * 5.99), 2)
 
-minListens = cost / MIN_PAY_RATE
-maxListens = cost / MAX_PAY_RATE
+minListens = round((cost / MIN_PAY_RATE), 2)
+maxListens = round((cost / MAX_PAY_RATE), 2)
+minListensPerYear = round((costPerYear / MIN_PAY_RATE))
+maxListensPerYear = round((costPerYear / MAX_PAY_RATE))
+
+# Output amount of listens needed to break even
+print("\n")
+
+
+if distributor == "DistroKid":
+    print("Your release will require a $" + str(cost) + " license, but this will cover all your releases for a year.")
+    if numCover > 0:
+        print("Additionally, you will have to pay " + str(costPerYear) + " per year to make up for the price of licensing cover songs.")
+    print("Therefore, you will need " + str(round(minListens)) + "-" + str(round(maxListens)) + " listens to break even.")
+    if numCover > 0:
+        print("With an extra " + str(round(minListensPerYear)) + "-" + str(round(maxListensPerYear)) + " listens per year to account for the cover licensing fee.")
+
 
 if distributor == "Soundrop":
-    minListens *= 1.15
-    maxListens *= 1.15
-
-minListensPerYear = costPerYear / MIN_PAY_RATE
-maxListensPerYear = costPerYear / MAX_PAY_RATE
-
-print("Your release will cost you $" + str(cost))
-if distributor == "DistroKid":
-    print("Additionally, you will have to pay " + str(costPerYear) + " per year, but you can release as many original songs for free for the next year")
-
-print("Therefore, you will need " + str(minListens) + "-" + str(maxListens) + " listens to break even")
-if distributor == "DistroKid":
-    print("With an additional " + str(minListensPerYear) + "-" + str(maxListensPerYear) + " listens per year to make up for the cost of uploading covers")
+    print("Your release will cost $" + str(cost) + ".")
+    print("Note: Soundrop takes 15% of payment from Spotify.")
+    print("Therefore, you will need " + str(round(minListens * 1.15)) + "-" + str(round(maxListens * 1.15)) + " listens to break even.")
