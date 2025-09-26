@@ -34,4 +34,12 @@ for count in range(0, numQuestions):
     if studentAnswerList[count] == correctAnswerList[count]:
         numCorrect += 1
 
-print(numCorrect)
+quizPercentage = round((numCorrect / numQuestions) * 100)
+
+# Output results
+print(name + " got " + str(numCorrect) + " out of " + str(numQuestions) + " questions correct.  Which gives them a score of " + str(quizPercentage) + "%.")
+
+if quizPercentage < 70:
+    print("Unfortunately, " + name + " failed their quiz...")
+else:
+    print(name + " passed their quiz!  Conglomeration!!!")
