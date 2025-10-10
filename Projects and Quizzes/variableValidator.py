@@ -15,31 +15,30 @@ print("=== PYTHON VARIABLE NAME VALIDATOR ===")
 print("This program checks if your variable name is valid in Python.")
 print()
 
-validVar = True
-specialChar = False
-emptyString = False
-startNumber = False
-pyKeyword = False
-
 # Check each rule and provide appropriate feedback
 while True:
     variableName = input("Enter a variable name to validate: ")
-    varNameChars = list(variableName)
-    firstChar = varNameChars[0]
     wrongChar = variableName.isalnum()
+
+    validVar = True
+    specialChar = False
+    emptyString = False
+    startNumber = False
+    pyKeyword = False
 
     if variableName == "":
         emptyString = True
         validVar = False
-    if wrongChar == False:
-        specialChar = True
-        validVar = False
-    if firstChar.isdigit():
-        startNumber = True
-        validVar = False
-    if variableName in pythonKeywords:
-        pyKeyword = True
-        validVar = False
+    else:
+        if wrongChar == False:
+            specialChar = True
+            validVar = False
+        if variableName[0].isdigit():
+            startNumber = True
+            validVar = False
+        if variableName in pythonKeywords:
+            pyKeyword = True
+            validVar = False
 
     if validVar == False:
         print("Invalid Variable Name.")
