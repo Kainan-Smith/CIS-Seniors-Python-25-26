@@ -29,6 +29,7 @@ for count in range(numSchools):
     tuition.append(int(input("Tuiton Cost: ")))
     distance.append(float(input("Distance from Home (miles): ")))
     acceptance_rate.append(float(input("Acceptance Rate: ")))
+    print("\n")
 
 
 # Feature 3
@@ -53,3 +54,4 @@ print(f"The total cost of applying all {numSchools} schools would be {totalCost}
 print(f"The average tuition of the {numSchools} schools is {avgTuition:,.2f}.")
 print(f"To visit every school, you would have to travel {totalDistance} miles.")
 
+ 
