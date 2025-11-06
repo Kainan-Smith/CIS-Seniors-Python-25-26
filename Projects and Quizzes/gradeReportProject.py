@@ -23,10 +23,9 @@ grade_book[2]["average"] = averageFunc(grade_book[2])
 
 def print_class_report(students):
     """Prints a formatted report for all students"""
-    for item in grade_book:
-        count = 0
-        print(grade_book[count]["name"])
-        count += 1
+    for dictItem in grade_book:
+        for key, value in dictItem.items():
+            print(grade_book[dictItem]("name"))
     pass
 
 def find_top_student(students):
