@@ -30,7 +30,7 @@ def get_user_name():
 
     NOTE: We use a separate function for this to keep each function doing ONE specific task
     '''
-    name = input("What is your nae? ")
+    name = input("What is your name? ")
     return name
 
 def get_income():
@@ -89,13 +89,33 @@ def get_expenses():
 
 
 def calculate_remaining(income, expenses):
-    pass
+    remaining = income - expenses
+    return remaining
 
 def provide_feedback(remaining, income):
-    pass
+    if remaining >= income * 0.75:
+        feedback = "Amazing!"
+    elif remaining >= income * 0.5:
+        feedback = "Good."
+    elif remaining >= income * 0.25:
+        feedback = "Not bad."
+    else:
+        feedback = "You're spending too much!"
+    return feedback
 
 def display_summary(name, income, expenses_dict, total_expenses, remaining, feedback):
-    pass
+    print("\n---Summary---\n")
+    print("Name:", name)
+    print(f"Income: ${income:.2f}")
+    print(f"Rent/Housing Costs: ${expenses_dict["Rent/Housing"]:.2f}")
+    print(f"Food/Grocery Costs: ${expenses_dict["Food/Groceries"]:.2f}")
+    print(f"Transportation Costs: ${expenses_dict["Transportation"]:.2f}")
+    print(f"Entertainment Costs: ${expenses_dict["Entertainment"]:.2f}")
+    print(f"Savings: ${expenses_dict["Savings"]:.2f}")
+    print(f"Miscellaneous Costs: ${expenses_dict["Miscellaneous"]:.2f}")
+    print(f"Total Expenses: ${total_expenses:.2f}")
+    print(f"Remaining money: ${remaining:.2f}")
+    print(f"{feedback}")
 
 def main():
     '''
@@ -105,7 +125,7 @@ def main():
     1. Display header
     2. Get user information
     3. Get expenses
-    4. Calculate results
+    4. Calculate remaining
     5. Get feedback
     6. Display summary
     7. Say goodbye
@@ -125,13 +145,17 @@ def main():
     # NOTE: This function returns TWO values (tuple unpacking)
     expense_categories, total_expenses = get_expenses()
 
-    # 4. Calculate results
+    # 4. Calculate remaining
+    remaining_money = calculate_remaining(monthly_income, total_expenses)
 
     # 5. Get feedback
+    feedback = provide_feedback(remaining_money, monthly_income)
 
     # 6. Display summary
+    display_summary(user_name, monthly_income, expense_categories, total_expenses, remaining_money, feedback)
 
     # 7. Say goodbye
+    print("\nGoodbye!")
 
 if __name__ == "__main__":
     main()
