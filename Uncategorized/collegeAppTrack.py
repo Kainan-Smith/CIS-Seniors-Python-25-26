@@ -36,8 +36,9 @@ def analyze_sat(score):
         feedback = "Good score!"
     elif score >= 1000:
         feedback = "Solid foundation!"
-    else:
+    elif score < 1000:
         feedback = "Consider retaking to improve college options."
+    return feedback
 
 
 def display_summary(colleges, cost, sat_score, sat_feedback):

@@ -14,7 +14,7 @@ def display_info(name, age):
     '''Display personalized information'''
     print("\n=== Your Profile ===")
     print("Name: " + name)
-    print("Age: " + age)
+    print("Age: " + str(age))
     print("Grade Level: Senior")
 
 def main():
