@@ -72,7 +72,7 @@ start = make_time(9, 20, 0)
 # Modify the object directly
 start.hours += 1
 start.minutes += 30
-print_time(start)   #10:50:00
+print_time(start)       # 10:50:00
 
 start = make_time(9, 20, 0)
 end = copy(start)       # create a new independent object
